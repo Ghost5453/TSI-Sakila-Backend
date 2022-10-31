@@ -28,17 +28,38 @@ public class SakilaProjectApplication {
 		SpringApplication.run(SakilaProjectApplication.class, args);
 	}
 
-	@GetMapping("/actors")
+	//region GetMappings
+	@GetMapping("/actor")
 	public @ResponseBody
 	Iterable<Actor> getAllActors(){
 		return actorRepo.findAll();
 	}
 
-	@PutMapping("/employees/{id}")
-	public ResponseEntity<Actor> updateEmployee(@PathVariable(value = "id") int actorID,
-												@Validated @RequestBody Actor actorDetails) throws ResourceAccessException {
+	@GetMapping("/actor/{id}")
+	public Actor getSignalActor(@PathVariable(value = "id") int actorID)
+	{
+		return actorRepo.findById(actorID).orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
+	}
+
+	@GetMapping("/address")
+	public @ResponseBody
+	Iterable<Address> getAllAddresses(){
+		return addressRepo.findAll();
+	}
+
+	@GetMapping("/address/{id}")
+	public Address getSignalAddress(@PathVariable(value = "id") int addressID)
+	{
+		return  addressRepo.findById(addressID).orElseThrow(() -> new ResourceAccessException("Address not found at index " + addressID));
+	}
+	//endregion
+
+	//region PutMappings
+	@PutMapping("/actor/{id}")
+	public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorID, @Validated @RequestBody Actor actorDetails)
+			throws ResourceAccessException {
 		Actor actor = actorRepo.findById(actorID)
-				.orElseThrow(() -> new ResourceAccessException("Employee not found for this id :: " + actorID));
+				.orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
 
 		actor.setID(actorDetails.getID());
 		actor.setActorLastName(actorDetails.getActorLastName());
@@ -47,9 +68,12 @@ public class SakilaProjectApplication {
 		return ResponseEntity.ok(updatedEmployee);
 	}
 
-	@GetMapping("/addresses")
-	public @ResponseBody
-	Iterable<Address> getAllAddresses(){
-		return addressRepo.findAll();
-	}
+//	@PutMapping("/address/{id}")
+//	public ResponseEntity<Address> updateAddress(@PathVariable(value = "id") int addressID, @Validated @RequestBody Address addressDetails)
+//		throws ResourceAccessException{
+//		Address address = addressRepo.findById(addressDetails.getAddressID()).orElseThrow(() -> new ResourceAccessException("Address not found for this id :: " + addressID));
+//
+//	}
+	//endregion
+
 }

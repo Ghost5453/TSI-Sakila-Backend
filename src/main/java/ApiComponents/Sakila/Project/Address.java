@@ -12,22 +12,22 @@ public class Address {
     @Id
     @Column(name="address_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int addressID;
+    private int addressID;
 
     @Column(name="address")
-    String address;
+    private String address;
 
     @Column(name="district")
-    String addressDistrict;
+    private String addressDistrict;
 
     @Column(name="city_id")
-    int cityIdFromAddress;
+    private int cityIdFromAddress;
 
     @Column(name="postal_code")
-    String postCode;
+    private String postCode;
 
     @Column(name="phone")
-    String phoneNumber;
+    private String phoneNumber;
 
     //TODO Work out how to store blobs for Column(name="location")
 
@@ -54,6 +54,16 @@ public class Address {
     //endregion
 
     //region Methods
+
+    public void setAll(int myID, String myAddress, String myAddressDistrict, int myCityID, String myPostCode, String myPhoneNumber)
+    {
+        addressID = myID;
+        address = myAddress;
+        addressDistrict = myAddressDistrict;
+        cityIdFromAddress = myCityID;
+        postCode = myPostCode;
+        phoneNumber = myPhoneNumber;
+    }
 
     //region Getters
 

@@ -9,20 +9,20 @@ public class Actor {
     @Id
     @Column(name="actor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int actorId;
+    private int actorID;
 
     @Column(name="first_name")
-    String actorFirstName;
+    private String actorFirstName;
 
     @Column(name="last_name")
-    String actorLastName;
+    private String actorLastName;
     //endregion
 
 
     //region Constructors
     public Actor(int myActorID, String myFirstName, String myLastName)
     {
-        this.actorId = myActorID;
+        this.actorID = myActorID;
         this.actorFirstName = myFirstName;
         this.actorLastName = myLastName;
     }
@@ -35,6 +35,12 @@ public class Actor {
 
     //region Methods
 
+    public void setAll(int myID, String myFirstName, String myLastName)
+    {
+        actorID = myID;
+        actorFirstName = myFirstName;
+        actorLastName = myLastName;
+    }
 
     //region Getters
     public String getFirstName()
@@ -49,14 +55,14 @@ public class Actor {
 
     public int getID()
     {
-        return actorId;
+        return actorID;
     }
     //endregion
 
     //region Setters
     public void setID(int myID)
     {
-        actorId = myID;
+        actorID = myID;
     }
 
     public void setActorLastName(String myLastName)
