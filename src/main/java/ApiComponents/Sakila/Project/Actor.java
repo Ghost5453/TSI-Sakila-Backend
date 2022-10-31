@@ -34,14 +34,12 @@ public class Actor {
     //endregion
 
     //region Methods
+
+
+    //region Getters
     public String getFirstName()
     {
         return actorFirstName;
-    }
-
-    public void setFirstName(String myFirstName)
-    {
-        actorFirstName = myFirstName;
     }
 
     public String getActorLastName()
@@ -49,20 +47,29 @@ public class Actor {
         return actorLastName;
     }
 
+    public int getID()
+    {
+        return actorId;
+    }
+    //endregion
+
+    //region Setters
+    public void setID(int myID)
+    {
+        actorId = myID;
+    }
+
     public void setActorLastName(String myLastName)
     {
         actorLastName = myLastName;
     }
 
-    public int getID()
+    public void setFirstName(String myFirstName)
     {
-        return actorId;
+        actorFirstName = myFirstName;
     }
+    //endregion
 
-    public void setID(int myID)
-    {
-        actorId = myID;
-    }
     //endregion
 
 }
