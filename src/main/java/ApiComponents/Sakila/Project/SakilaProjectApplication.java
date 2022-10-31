@@ -13,9 +13,11 @@ public class SakilaProjectApplication {
 
 	@Autowired
 	private ActorRepo actorRepo;
-	public SakilaProjectApplication(ActorRepo myActorRepo)
+	private AddressRepo addressRepo;
+	public SakilaProjectApplication(ActorRepo myActorRepo, AddressRepo myAddressRepo)
 	{
 		this.actorRepo = myActorRepo;
+		this.addressRepo = myAddressRepo;
 	}
 
 	public static void main(String[] args) {
@@ -29,5 +31,9 @@ public class SakilaProjectApplication {
 		return actorRepo.findAll();
 	}
 
-
+	@GetMapping("/allAddresses")
+	public @ResponseBody
+	Iterable<Address> getAllAddresses(){
+		return addressRepo.findAll();
+	}
 }
