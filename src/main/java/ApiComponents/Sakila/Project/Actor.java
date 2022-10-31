@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="actor")
 public class Actor {
-    // Atrabuts
+    //region Attributes
     @Id
     @Column(name="actor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +16,13 @@ public class Actor {
 
     @Column(name="last_name")
     String actorLastName;
+    //endregion
 
 
-    // Constructors
-    public Actor(String myFirstName, String myLastName)
+    //region Constructors
+    public Actor(int myActorID, String myFirstName, String myLastName)
     {
+        this.actorId = myActorID;
         this.actorFirstName = myFirstName;
         this.actorLastName = myLastName;
     }
@@ -29,8 +31,9 @@ public class Actor {
     {
 
     }
+    //endregion
 
-    // Methords
+    //region Methods
     public String getFirstName()
     {
         return actorFirstName;
@@ -60,5 +63,6 @@ public class Actor {
     {
         actorId = myID;
     }
+    //endregion
 
 }
