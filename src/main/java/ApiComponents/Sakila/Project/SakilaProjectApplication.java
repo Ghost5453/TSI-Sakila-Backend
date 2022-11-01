@@ -25,7 +25,8 @@ public class SakilaProjectApplication {
 
 	public static void main(String[] args)
 	{
-		SpringApplication.run(SakilaProjectApplication.class, args);
+		//SpringApplication.run(SakilaProjectApplication.class, args);
+		SpringApplication.run(ActorController.class, args);
 	}
 
 	//region GetMappings

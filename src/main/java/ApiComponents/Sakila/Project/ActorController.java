@@ -1,7 +1,16 @@
 package ApiComponents.Sakila.Project;
 
-public class ActorController {
+import org.springframework.beans.factory.annotation.Autowired;
 
+public class ActorController
+{
+    @Autowired
+    private ActorRepo actorRepo;
+
+    public ActorController(ActorRepo myActorRepo)
+    {
+        this.actorRepo = myActorRepo;
+    }
 
 
 }
