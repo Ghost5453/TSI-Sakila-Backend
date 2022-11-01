@@ -35,17 +35,8 @@ public class SakilaProjectApplication {
 	//region GetMappings
 
 
-	@GetMapping("/addresses")
-	public @ResponseBody
-	Iterable<Address> getAllAddresses(){
-		return addressRepo.findAll();
-	}
 
-	@GetMapping("/addresses/{id}")
-	public Address getSignalAddress(@PathVariable(value = "id") int addressID)
-	{
-		return  addressRepo.findById(addressID).orElseThrow(() -> new ResourceAccessException("Address not found at index " + addressID));
-	}
+
 	//endregion
 
 	//region PutMappings

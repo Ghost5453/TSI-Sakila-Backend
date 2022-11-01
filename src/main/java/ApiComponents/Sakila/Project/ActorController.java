@@ -19,18 +19,28 @@ public class ActorController
         this.actorRepo = myActorRepo;
     }
 
+    // Get all
     @GetMapping("/actors")
     public @ResponseBody
     Iterable<Actor> getAllActors(){
         return actorRepo.findAll();
     }
 
+    // Create
+    @PostMapping("/actors")
+    public Actor createActor(@Validated @RequestBody Actor actor)
+    {
+        return actorRepo.save(actor);
+    }
+
+    // Get by ID (Read)
     @GetMapping("/actors/{id}")
     public Actor getSignalActor(@PathVariable(value = "id") int actorID)
     {
         return actorRepo.findById(actorID).orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
     }
 
+    // Update
     @PutMapping("/actors/{id}")
     public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorID, @Validated @RequestBody Actor actorDetails)
             throws ResourceAccessException {
@@ -44,11 +54,7 @@ public class ActorController
         return ResponseEntity.ok(updatedEmployee);
     }
 
-    @PostMapping("/actors")
-    public Actor createActor(@Validated @RequestBody Actor actor)
-    {
-        return actorRepo.save(actor);
-    }
-
+    // Delete
+    //@DeleteMapping("")
 
 }
