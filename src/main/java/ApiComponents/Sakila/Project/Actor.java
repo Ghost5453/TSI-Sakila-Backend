@@ -43,7 +43,7 @@ public class Actor {
     }
 
     //region Getters
-    public String getFirstName()
+    public String getActorFirstName()
     {
         return actorFirstName;
     }

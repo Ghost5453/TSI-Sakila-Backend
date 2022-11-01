@@ -14,9 +14,13 @@ import org.springframework.web.client.ResourceAccessException;
 @CrossOrigin
 public class SakilaProjectApplication {
 
+	private ActorController actorController;
+
+
 	@Autowired
 	private ActorRepo actorRepo;
 	private AddressRepo addressRepo;
+
 	public SakilaProjectApplication(ActorRepo myActorRepo, AddressRepo myAddressRepo)
 	{
 		this.actorRepo = myActorRepo;
@@ -25,22 +29,11 @@ public class SakilaProjectApplication {
 
 	public static void main(String[] args)
 	{
-		//SpringApplication.run(SakilaProjectApplication.class, args);
-		SpringApplication.run(ActorController.class, args);
+		SpringApplication.run(SakilaProjectApplication.class, args);
 	}
 
 	//region GetMappings
-	@GetMapping("/actors")
-	public @ResponseBody
-	Iterable<Actor> getAllActors(){
-		return actorRepo.findAll();
-	}
 
-	@GetMapping("/actors/{id}")
-	public Actor getSignalActor(@PathVariable(value = "id") int actorID)
-	{
-		return actorRepo.findById(actorID).orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
-	}
 
 	@GetMapping("/addresses")
 	public @ResponseBody
@@ -56,18 +49,7 @@ public class SakilaProjectApplication {
 	//endregion
 
 	//region PutMappings
-	@PutMapping("/actors/{id}")
-	public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorID, @Validated @RequestBody Actor actorDetails)
-			throws ResourceAccessException {
-		Actor actor = actorRepo.findById(actorID)
-				.orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
 
-		actor.setID(actorDetails.getID());
-		actor.setActorLastName(actorDetails.getActorLastName());
-		actor.setFirstName(actorDetails.getFirstName());
-		final Actor updatedEmployee = actorRepo.save(actor);
-		return ResponseEntity.ok(updatedEmployee);
-	}
 
 //	@PutMapping("/address/{id}")
 //	public ResponseEntity<Address> updateAddress(@PathVariable(value = "id") int addressID, @Validated @RequestBody Address addressDetails)
@@ -78,11 +60,7 @@ public class SakilaProjectApplication {
 	//endregion
 
 	//region PostMapping
-	@PostMapping("/actors")
-	public Actor createActor(@Validated @RequestBody Actor actor)
-	{
-		return actorRepo.save(actor);
-	}
+
 
 	//endregion
 
