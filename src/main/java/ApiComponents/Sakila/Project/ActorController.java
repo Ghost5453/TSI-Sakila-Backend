@@ -6,6 +6,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.ResourceAccessException;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/home")
 @CrossOrigin
@@ -55,6 +58,18 @@ public class ActorController
     }
 
     // Delete
-    //@DeleteMapping("")
+    @DeleteMapping("/actors/delete/{id}")
+    public Map<String, Boolean> deleteActor(@PathVariable(value = "id") int actorID)
+            throws ResourceAccessException{
+                Actor actor = actorRepo.findById(actorID)
+                    .orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
+
+                actorRepo.deleteById(actorID);
+
+                Map<String, Boolean> response = new HashMap<>();
+                response.put("Deleted", Boolean.TRUE);
+
+                return response;
+            }
 
 }

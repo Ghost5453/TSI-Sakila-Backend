@@ -32,27 +32,5 @@ public class SakilaProjectApplication {
 		SpringApplication.run(SakilaProjectApplication.class, args);
 	}
 
-	//region GetMappings
-
-
-
-
-	//endregion
-
-	//region PutMappings
-
-
-//	@PutMapping("/address/{id}")
-//	public ResponseEntity<Address> updateAddress(@PathVariable(value = "id") int addressID, @Validated @RequestBody Address addressDetails)
-//		throws ResourceAccessException{
-//		Address address = addressRepo.findById(addressDetails.getAddressID()).orElseThrow(() -> new ResourceAccessException("Address not found for this id :: " + addressID));
-//
-//	}
-	//endregion
-
-	//region PostMapping
-
-
-	//endregion
 
 }
