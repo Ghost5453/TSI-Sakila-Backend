@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.ResourceAccessException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -43,12 +44,25 @@ public class ActorController
         return actorRepo.findById(actorID).orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
     }
 
+    @GetMapping("/actors/name/first/{name}")
+    public @ResponseBody List<Actor> getActorByFirstName(@PathVariable("name") String actorFirstName)
+    {
+        return actorRepo.findActorFirstName(actorFirstName);
+    }
+
+    @GetMapping("/actors/name/last/{name}")
+    public @ResponseBody List<Actor> getActorByLastName(@PathVariable("name") String actorLastName)
+    {
+        return actorRepo.findActorLastName(actorLastName);
+    }
+
+
     // Update
     @PutMapping("/actors/{id}")
     public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorID, @Validated @RequestBody Actor actorDetails)
             throws ResourceAccessException {
         Actor actor = actorRepo.findById(actorID)
-                .orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
+                .orElseThrow(() -> new ResourceAccessException("Actor not found by " + actorID));
 
         actor.setID(actorDetails.getID());
         actor.setActorLastName(actorDetails.getActorLastName());
@@ -61,15 +75,15 @@ public class ActorController
     @DeleteMapping("/actors/delete/{id}")
     public Map<String, Boolean> deleteActor(@PathVariable(value = "id") int actorID)
             throws ResourceAccessException{
-                Actor actor = actorRepo.findById(actorID)
-                    .orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
+        Actor actor = actorRepo.findById(actorID)
+                .orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
 
-                actorRepo.deleteById(actorID);
+        actorRepo.deleteById(actorID);
 
-                Map<String, Boolean> response = new HashMap<>();
-                response.put("Deleted", Boolean.TRUE);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Deleted", Boolean.TRUE);
 
-                return response;
-            }
+        return response;
+    }
 
 }

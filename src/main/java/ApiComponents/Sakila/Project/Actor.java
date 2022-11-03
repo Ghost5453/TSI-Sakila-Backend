@@ -27,6 +27,12 @@ public class Actor {
         this.actorLastName = myLastName;
     }
 
+    public Actor(String myFirstName, String myLastName)
+    {
+        this.actorFirstName = myFirstName;
+        this.actorLastName = myLastName;
+    }
+
     public Actor()
     {
 
