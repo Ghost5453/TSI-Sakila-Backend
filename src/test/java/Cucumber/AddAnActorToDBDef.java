@@ -1,6 +1,5 @@
 package Cucumber;
 
-
 import ApiComponents.Sakila.ActorComponents.Actor;
 import ApiComponents.Sakila.ActorComponents.ActorController;
 import ApiComponents.Sakila.ActorComponents.ActorRepo;
@@ -33,17 +32,14 @@ public class AddAnActorToDBDef {
     public void the_admin_adds_the_actor()
     {
         testActorRepo.save(testActor);
-
     }
 
     @Then("the actor will be be added to the database and show the entry")
     public void the_actor_will_be_added_to_the_database_and_show_the_entry()
     {
-
         resultsActor = testActorRepo.findActorFirstName("Test");
 
         Assertions.assertEquals("Test",resultsActor.getActorFirstName(),"Mismatch in first name");
         Assertions.assertEquals("Testson", resultsActor.getActorLastName(), "Mismatch in last name");
-
     }
 }
