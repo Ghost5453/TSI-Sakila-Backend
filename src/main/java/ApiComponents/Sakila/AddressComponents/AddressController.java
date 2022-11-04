@@ -1,4 +1,4 @@
-package ApiComponents.Sakila.Project;
+package ApiComponents.Sakila.AddressComponents;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.ResourceAccessException;

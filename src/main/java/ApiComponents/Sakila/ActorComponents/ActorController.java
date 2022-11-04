@@ -1,4 +1,4 @@
-package ApiComponents.Sakila.Project;
+package ApiComponents.Sakila.ActorComponents;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("actors")
 @CrossOrigin
 public class ActorController
 {
@@ -24,45 +24,45 @@ public class ActorController
     }
 
     // Get all
-    @GetMapping("/actors")
+    @GetMapping("")
     public @ResponseBody
     Iterable<Actor> getAllActors(){
         return actorRepo.findAll();
     }
 
     // Create
-    @PostMapping("/actors")
+    @PostMapping("")
     public Actor createActor(@Validated @RequestBody Actor actor)
     {
         return actorRepo.save(actor);
     }
 
     // Get by ID (Read)
-    @GetMapping("/actors/{id}")
+    @GetMapping("/{id}")
     public Actor getSignalActor(@PathVariable(value = "id") int actorID)
     {
         return actorRepo.findById(actorID).orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
     }
 
-    @GetMapping("/actors/name/first/{name}/all")
+    @GetMapping("name/first/{name}/all")
     public @ResponseBody List<Actor> getAllActorByFirstName(@PathVariable("name") String actorFirstName)
     {
         return actorRepo.findAllActorFirstName(actorFirstName);
     }
 
-    @GetMapping("/actors/name/last/{name}/all")
+    @GetMapping("name/last/{name}/all")
     public @ResponseBody List<Actor> getAllActorByLastName(@PathVariable("name") String actorLastName)
     {
         return actorRepo.findAllActorLastName(actorLastName);
     }
 
-    @GetMapping("/actors/name/first/{name}")
+    @GetMapping("name/first/{name}")
     public @ResponseBody Actor getActorByFirstName(@PathVariable("name") String actorFirstName)
     {
         return actorRepo.findActorFirstName(actorFirstName);
     }
 
-    @GetMapping("/actors/name/last/{name}")
+    @GetMapping("name/last/{name}")
     public @ResponseBody Actor getActorByLastName(@PathVariable("name") String actorLastName)
     {
         return actorRepo.findActorLastName(actorLastName);
@@ -71,7 +71,8 @@ public class ActorController
 
     // Update
     @PutMapping("/actors/{id}")
-    public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorID, @Validated @RequestBody Actor actorDetails)
+    public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorID,
+                     @Validated @RequestBody Actor actorDetails)
             throws ResourceAccessException {
         Actor actor = actorRepo.findById(actorID)
                 .orElseThrow(() -> new ResourceAccessException("Actor not found by " + actorID));
@@ -84,7 +85,7 @@ public class ActorController
     }
 
     // Delete
-    @DeleteMapping("/actors/delete/{id}")
+    @DeleteMapping("delete/{id}")
     public Map<String, Boolean> deleteActor(@PathVariable(value = "id") int actorID)
             throws ResourceAccessException{
         Actor actor = actorRepo.findById(actorID)

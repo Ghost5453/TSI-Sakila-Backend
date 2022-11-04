@@ -1,16 +1,16 @@
-package ApiComponents.Sakila.Project;
+package ApiComponents.Sakila;
 
+import ApiComponents.Sakila.ActorComponents.ActorController;
+import ApiComponents.Sakila.ActorComponents.ActorRepo;
+import ApiComponents.Sakila.AddressComponents.AddressRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.ResourceAccessException;
 
 @SpringBootApplication
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/")
 @CrossOrigin
 public class SakilaProjectApplication {
 

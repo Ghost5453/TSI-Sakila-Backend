@@ -1,4 +1,4 @@
-package ApiComponents.Sakila.Project;
+package ApiComponents.Sakila.AddressComponents;
 
 import javax.persistence.*;
 

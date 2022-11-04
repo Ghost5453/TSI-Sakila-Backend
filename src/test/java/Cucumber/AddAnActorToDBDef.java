@@ -1,9 +1,9 @@
 package Cucumber;
 
 
-import ApiComponents.Sakila.Project.Actor;
-import ApiComponents.Sakila.Project.ActorController;
-import ApiComponents.Sakila.Project.ActorRepo;
+import ApiComponents.Sakila.ActorComponents.Actor;
+import ApiComponents.Sakila.ActorComponents.ActorController;
+import ApiComponents.Sakila.ActorComponents.ActorRepo;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,7 +19,7 @@ public class AddAnActorToDBDef {
     Actor resultsActor;
 
     @Autowired
-    ActorController testActorControler = new ActorController(testActorRepo);
+    ActorController testActorController = new ActorController(testActorRepo);
 
     @Given("a new actor needs to be added")
     public void a_new_actor_needs_to_be_added()
@@ -27,8 +27,6 @@ public class AddAnActorToDBDef {
         testFirstName = "Test";
         testLastName = "Testson";
         testActor = new Actor(testFirstName, testLastName);
-
-//        throw new io.cucumber.java.PendingException();
     }
 
     @When("the admin adds the actor")
@@ -36,7 +34,6 @@ public class AddAnActorToDBDef {
     {
         testActorRepo.save(testActor);
 
-//        throw new io.cucumber.java.PendingException();
     }
 
     @Then("the actor will be be added to the database and show the entry")
@@ -48,6 +45,5 @@ public class AddAnActorToDBDef {
         Assertions.assertEquals("Test",resultsActor.getActorFirstName(),"Mismatch in first name");
         Assertions.assertEquals("Testson", resultsActor.getActorLastName(), "Mismatch in last name");
 
-//        throw new io.cucumber.java.PendingException();
     }
 }
