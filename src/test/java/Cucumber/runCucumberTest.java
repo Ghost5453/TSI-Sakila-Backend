@@ -9,7 +9,4 @@ import org.junit.runner.RunWith;
 features ="src/test/resources/Cucumber",
 glue = "Cucumber")
 public class runCucumberTest {
-
-
-
 }

@@ -1,9 +1,8 @@
 package ApiComponents.Sakila.FilmComponents;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import ApiComponents.Sakila.ActorComponents.Actor;
+import javax.persistence.*;
+import java.util.List;
 
 public class Film {
 
@@ -38,6 +37,13 @@ public class Film {
 
     @Column(name = "special_features")
     private String filmFeatures;
+
+    @ManyToMany
+    @JoinTable(name = "sakila.film_actor",
+        joinColumns = @JoinColumn(name = "film_id"),
+        inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    List<Actor> actors;
+
     //endregion
 
     //region Constructors
