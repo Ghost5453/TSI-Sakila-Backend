@@ -1,7 +1,8 @@
 package ApiComponents.Sakila.FilmComponents;
 
-//import ApiComponents.Sakila.ActorComponents.Actor;
+import ApiComponents.Sakila.ActorComponents.Actor;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="film")
@@ -38,11 +39,11 @@ public class Film {
     @Column(name = "special_features")
     private String filmFeatures;
 
-//    @ManyToMany
-//    @JoinTable(name = "sakila.film_actor",
-//        joinColumns = @JoinColumn(name = "film_id"),
-//        inverseJoinColumns = @JoinColumn(name = "actor_id"))
-//    List<Actor> actors;
+    @ManyToMany
+    @JoinTable(name = "sakila.film_actor",
+        joinColumns = @JoinColumn(name = "film_id"),
+        inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    List<Actor> actors;
 
     //endregion
 
