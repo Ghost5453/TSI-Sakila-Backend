@@ -18,17 +18,17 @@ import java.lang.reflect.Field;
 public class SakilaProjectApplication {
 
 
-	@Autowired
-	private ActorRepo actorRepo;
-	private AddressRepo addressRepo;
-	private FilmRepo filmRepo;
+//	@Autowired
+//	private ActorRepo actorRepo;
+//	private AddressRepo addressRepo;
+//	private FilmRepo filmRepo;
 
-	public SakilaProjectApplication(ActorRepo myActorRepo, AddressRepo myAddressRepo, FilmRepo myFilmRepo)
-	{
-		this.actorRepo = myActorRepo;
-		this.addressRepo = myAddressRepo;
-		this.filmRepo = myFilmRepo;
-	}
+//	public SakilaProjectApplication(ActorRepo myActorRepo, AddressRepo myAddressRepo, FilmRepo myFilmRepo)
+//	{
+//		this.actorRepo = myActorRepo;
+//		this.addressRepo = myAddressRepo;
+//		this.filmRepo = myFilmRepo;
+//	}
 
 	public static void main(String[] args)
 	{

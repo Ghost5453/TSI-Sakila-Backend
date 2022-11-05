@@ -1,9 +1,11 @@
 package ApiComponents.Sakila.FilmComponents;
 
-import ApiComponents.Sakila.ActorComponents.Actor;
+//import ApiComponents.Sakila.ActorComponents.Actor;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name="film")
 public class Film {
 
     //region Attributes

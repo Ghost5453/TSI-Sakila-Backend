@@ -70,7 +70,7 @@ public class ActorController
 
 
     // Update
-    @PutMapping("/actors/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorID,
                      @Validated @RequestBody Actor actorDetails)
             throws ResourceAccessException {
