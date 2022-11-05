@@ -3,10 +3,13 @@ package ApiComponents.Sakila;
 import ApiComponents.Sakila.ActorComponents.ActorController;
 import ApiComponents.Sakila.ActorComponents.ActorRepo;
 import ApiComponents.Sakila.AddressComponents.AddressRepo;
+import ApiComponents.Sakila.FilmComponents.FilmRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.Field;
 
 @SpringBootApplication
 @RestController
@@ -14,17 +17,17 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class SakilaProjectApplication {
 
-	private ActorController actorController;
-
 
 	@Autowired
 	private ActorRepo actorRepo;
 	private AddressRepo addressRepo;
+	private FilmRepo filmRepo;
 
-	public SakilaProjectApplication(ActorRepo myActorRepo, AddressRepo myAddressRepo)
+	public SakilaProjectApplication(ActorRepo myActorRepo, AddressRepo myAddressRepo, FilmRepo myFilmRepo)
 	{
 		this.actorRepo = myActorRepo;
 		this.addressRepo = myAddressRepo;
+		this.filmRepo = myFilmRepo;
 	}
 
 	public static void main(String[] args)

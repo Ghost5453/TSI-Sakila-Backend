@@ -1,6 +1,5 @@
 package ApiComponents.Sakila.FilmComponents;
 
-import ApiComponents.Sakila.ActorComponents.Actor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,23 +24,23 @@ public class FilmController {
 
     @GetMapping("")
     public @ResponseBody
-    Iterable<Film> getAllActors(){
+    Iterable<Film> getAllFilms(){
         return filmRepo.findAll();
     }
 
     // Create
     @PostMapping("")
-    public Film createActor(@Validated @RequestBody Film film)
+    public Film createFilm(@Validated @RequestBody Film film)
     {
         return filmRepo.save(film);
     }
 
     // Get by ID (Read)
     @GetMapping("/{id}")
-    public Film getSignalActor(@PathVariable(value = "id") int filmID)
+    public Film getSignalFilm(@PathVariable(value = "id") int filmID)
     {
         return filmRepo.findById(filmID)
-                .orElseThrow(() -> new ResourceAccessException("Actor not found at index " + filmID));
+                .orElseThrow(() -> new ResourceAccessException("Film not found at index " + filmID));
     }
 
 //    @GetMapping("name/first/{name}/all")
@@ -70,33 +69,33 @@ public class FilmController {
 
 
     // Update
-//    @PutMapping("/actors/{id}")
-//    public ResponseEntity<Film> updateActor(@PathVariable(value = "id") int filmID,
-//                                             @Validated @RequestBody Actor actorDetails)
-//            throws ResourceAccessException {
-//        Film film = filmRepo.findById(filmID)
-//                .orElseThrow(() -> new ResourceAccessException("Actor not found by " + filmID));
-//
-//        film.setID(actorDetails.getID());
-//        film.setActorLastName(actorDetails.getActorLastName());
-//        film.setFirstName(actorDetails.getActorFirstName());
-//        final Actor updatedEmployee = filmRepo.save(film);
-//        return ResponseEntity.ok(updatedEmployee);
-//    }
-//
-//    // Delete
-//    @DeleteMapping("delete/{id}")
-//    public Map<String, Boolean> deleteActor(@PathVariable(value = "id") int actorID)
-//            throws ResourceAccessException{
-//        Actor actor = filmRepo.findById(actorID)
-//                .orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
-//
-//        filmRepo.deleteById(actorID);
-//
-//        Map<String, Boolean> response = new HashMap<>();
-//        response.put("Deleted", Boolean.TRUE);
-//
-//        return response;
-//    }
+    @PutMapping("/actors/{id}")
+    public ResponseEntity<Film> updateActor(@PathVariable(value = "id") int filmID,
+                                             @Validated @RequestBody Film filmDetails)
+            throws ResourceAccessException {
+        Film film = filmRepo.findById(filmID)
+                .orElseThrow(() -> new ResourceAccessException("Film not found by " + filmID));
+
+        film.setFilmID(filmDetails.getFilmID());
+        film.setFilmTitle(filmDetails.getFilmTitle());
+        film.setFilmDescription(filmDetails.getFilmDescription());
+        final Film updatedFilm = filmRepo.save(film);
+        return ResponseEntity.ok(updatedFilm);
+    }
+
+    // Delete
+    @DeleteMapping("delete/{id}")
+    public Map<String, Boolean> deleteActor(@PathVariable(value = "id") int filmID)
+            throws ResourceAccessException{
+        Film film = filmRepo.findById(filmID)
+                .orElseThrow(() -> new ResourceAccessException("Film not found at index " + filmID));
+
+        filmRepo.deleteById(filmID);
+
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Deleted", Boolean.TRUE);
+
+        return response;
+    }
 
 }
