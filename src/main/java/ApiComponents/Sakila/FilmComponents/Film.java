@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Film {
 
-
     //region Attributes
     @Id @Column(name = "film_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int filmID;
@@ -38,11 +37,11 @@ public class Film {
     @Column(name = "special_features")
     private String filmFeatures;
 
-    @ManyToMany
-    @JoinTable(name = "sakila.film_actor",
-        joinColumns = @JoinColumn(name = "film_id"),
-        inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    List<Actor> actors;
+//    @ManyToMany
+//    @JoinTable(name = "sakila.film_actor",
+//        joinColumns = @JoinColumn(name = "film_id"),
+//        inverseJoinColumns = @JoinColumn(name = "actor_id"))
+//    List<Actor> actors;
 
     //endregion
 

@@ -21,11 +21,11 @@ public class Actor {
     private String actorLastName;
     //endregion
 
-    @ManyToMany
-    @JoinTable(name = "sakila.film_actor",
-        joinColumns = @JoinColumn(name = "actor_id"),
-        inverseJoinColumns = @JoinColumn(name = "film_id"))
-    List<Film> films;
+//    @ManyToMany
+//    @JoinTable(name = "sakila.film_actor",
+//        joinColumns = @JoinColumn(name = "actor_id"),
+//        inverseJoinColumns = @JoinColumn(name = "film_id"))
+//    List<Film> films;
 
     //region Constructors
     public Actor(int myActorID, String myFirstName, String myLastName)

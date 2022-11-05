@@ -31,6 +31,4 @@ public class SakilaProjectApplication {
 	{
 		SpringApplication.run(SakilaProjectApplication.class, args);
 	}
-
-
 }
