@@ -22,6 +22,7 @@ public class FilmController {
         this.filmRepo = myFilmRepo;
     }
 
+    //Reed All
     @GetMapping("")
     public @ResponseBody
     Iterable<Film> getAllFilms(){
@@ -71,7 +72,7 @@ public class FilmController {
     // Update
     @PutMapping("/{id}")
     public ResponseEntity<Film> updateActor(@PathVariable(value = "id") int filmID,
-                                             @Validated @RequestBody Film filmDetails)
+                @Validated @RequestBody Film filmDetails)
             throws ResourceAccessException {
         Film film = filmRepo.findById(filmID)
                 .orElseThrow(() -> new ResourceAccessException("Film not found by " + filmID));
@@ -79,6 +80,13 @@ public class FilmController {
         film.setFilmID(filmDetails.getFilmID());
         film.setFilmTitle(filmDetails.getFilmTitle());
         film.setFilmDescription(filmDetails.getFilmDescription());
+        film.setFilmLanguageID(filmDetails.getFilmLanguageID());
+        film.setFilmRentalDuration(filmDetails.getFilmRentalDuration());
+        film.setFilmRentalPrice(filmDetails.getFilmRentalPrice());
+        film.setFilmLength(filmDetails.getFilmLength());
+        film.setFilmReplacementCost(filmDetails.getFilmReplacementCost());
+        film.setFilmRating(filmDetails.getFilmRating());
+        film.setFilmFeatures(filmDetails.getFilmFeatures());
         final Film updatedFilm = filmRepo.save(film);
         return ResponseEntity.ok(updatedFilm);
     }

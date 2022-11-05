@@ -2,7 +2,6 @@ package ApiComponents.Sakila.FilmComponents;
 
 //import ApiComponents.Sakila.ActorComponents.Actor;
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name="film")
@@ -48,16 +47,16 @@ public class Film {
     //endregion
 
     //region Constructors
-    public Film(int myID, String myTitle, String myDescription, int myLanguageID, int myFilmRentalDuration, float myRentalRate, int myLength, float myReplacmentCosts, String myRating, String myFeatures)
+    public Film(int myID, String myTitle, String myDescription, int myLanguageID, int myFilmRentalDuration, float myRentalPrice, int myLength, float myReplacementCost, String myRating, String myFeatures)
     {
         filmID = myID;
         filmTitle = myTitle;
         filmDescription = myDescription;
         filmLanguageID = myLanguageID;
         filmRentalDuration = myFilmRentalDuration;
-        filmRentalPrice = myRentalRate;
+        filmRentalPrice = myRentalPrice;
         filmLength = myLength;
-        filmReplacementCost = myReplacmentCosts;
+        filmReplacementCost = myReplacementCost;
         filmRating = myRating;
         filmFeatures = myFeatures;
     }

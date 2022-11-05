@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.ResourceAccessException;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("addresses")
 @CrossOrigin
 public class AddressController {
 
@@ -16,14 +16,14 @@ public class AddressController {
     }
 
     // Get all
-    @GetMapping("/addresses")
+    @GetMapping("")
     public @ResponseBody
     Iterable<Address> getAllAddresses(){
         return addressRepo.findAll();
     }
 
     //
-    @GetMapping("/addresses/{id}")
+    @GetMapping("/{id}")
     public Address getSignalAddress(@PathVariable(value = "id") int addressID)
     {
         return  addressRepo.findById(addressID).orElseThrow(() -> new ResourceAccessException("Address not found at index " + addressID));
