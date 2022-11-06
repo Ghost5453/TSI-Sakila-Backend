@@ -1,6 +1,6 @@
-package ApiComponents.Sakila.FilmComponents;
+package SakilaAPI.FilmComponents;
 
-import ApiComponents.Sakila.ActorComponents.Actor;
+import SakilaAPI.ActorComponents.Actor;
 import javax.persistence.*;
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package Cucumber;
 
-import ApiComponents.Sakila.SakilaProjectApplication;
+import SakilaAPI.SakilaProjectApplication;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 

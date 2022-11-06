@@ -1,4 +1,4 @@
-package ApiComponents.Sakila.ActorComponents;
+package SakilaAPI.ActorComponents;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

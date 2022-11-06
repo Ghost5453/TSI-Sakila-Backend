@@ -1,4 +1,4 @@
-package ApiComponents.Sakila.AddressComponents;
+package SakilaAPI.AddressComponents;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

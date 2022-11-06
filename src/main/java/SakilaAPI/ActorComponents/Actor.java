@@ -1,6 +1,7 @@
-package ApiComponents.Sakila.ActorComponents;
+package SakilaAPI.ActorComponents;
 
-import ApiComponents.Sakila.FilmComponents.Film;
+import SakilaAPI.FilmComponents.Film;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -49,12 +50,12 @@ public class Actor {
 
     //region Methods
 
-    public void setAll(int myID, String myFirstName, String myLastName)
-    {
-        actorID = myID;
-        actorFirstName = myFirstName;
-        actorLastName = myLastName;
-    }
+//    public void setAll(int myID, String myFirstName, String myLastName)
+//    {
+//        actorID = myID;
+//        actorFirstName = myFirstName;
+//        actorLastName = myLastName;
+//    }
 
     //region Getters
     public String getActorFirstName()
@@ -89,7 +90,6 @@ public class Actor {
         actorFirstName = myFirstName;
     }
     //endregion
-
     //endregion
 
 }

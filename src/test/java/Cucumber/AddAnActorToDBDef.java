@@ -1,8 +1,8 @@
 package Cucumber;
 
-import ApiComponents.Sakila.ActorComponents.Actor;
-import ApiComponents.Sakila.ActorComponents.ActorController;
-import ApiComponents.Sakila.ActorComponents.ActorRepo;
+import SakilaAPI.ActorComponents.Actor;
+import SakilaAPI.ActorComponents.ActorController;
+import SakilaAPI.ActorComponents.ActorRepo;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

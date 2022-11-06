@@ -1,4 +1,4 @@
-package ApiComponents.Sakila.ActorComponents;
+package SakilaAPI.ActorComponents;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
