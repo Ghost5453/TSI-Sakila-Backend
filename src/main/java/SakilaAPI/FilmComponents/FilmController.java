@@ -8,11 +8,14 @@ import org.springframework.web.client.ResourceAccessException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 @RequestMapping("films")
 @CrossOrigin
 public class FilmController {
+    private Random rnd = new Random();
+    private int rndCheck;
 
     @Autowired
     private FilmRepo filmRepo;
@@ -34,6 +37,15 @@ public class FilmController {
     public Film createFilm(@Validated @RequestBody Film film)
     {
         return filmRepo.save(film);
+    }
+
+    @GetMapping("/rand")
+    public Film getRandFilm()
+    {
+        do {
+            rndCheck = rnd.nextInt(1000);
+        } while (rndCheck == 0);
+        return getSignalFilm(rndCheck);
     }
 
     // Get by ID (Read)
