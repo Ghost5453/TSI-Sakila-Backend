@@ -56,7 +56,7 @@ public class CustomerController
         customer.setCustomerLastName(customerDetails.getCustomerLastName());
         customer.setCustomerEmail(customerDetails.getCustomerEmail());
         customer.setAddressIDFromCustomer(customerDetails.getAddressIDFromCustomer());
-        customer.setCustomerIsActive(customerDetails.isCustomerIsActive());
+        customer.setCustomerIsActive(customerDetails.getIsCustomerActive());
 
         final Customer updatedEmployee = customerRepo.save(customer);
         return ResponseEntity.ok(updatedEmployee);

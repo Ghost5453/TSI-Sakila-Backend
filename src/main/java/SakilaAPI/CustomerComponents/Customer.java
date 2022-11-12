@@ -1,7 +1,6 @@
 package SakilaAPI.CustomerComponents;
 
 import javax.persistence.*;
-import java.security.PublicKey;
 
 @Entity
 @Table(name = "customer")
@@ -81,7 +80,7 @@ public class Customer {
         return addressIDFromCustomer;
     }
 
-    public boolean isCustomerIsActive()
+    public boolean getIsCustomerActive()
     {
         return customerIsActive;
     }
