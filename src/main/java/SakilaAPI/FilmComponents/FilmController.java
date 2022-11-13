@@ -6,6 +6,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.ResourceAccessException;
 
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -56,30 +57,29 @@ public class FilmController {
                 .orElseThrow(() -> new ResourceAccessException("Film not found at index " + filmID));
     }
 
-//    @GetMapping("name/first/{name}/all")
-//    public @ResponseBody List<Actor> getAllActorByFirstName(@PathVariable("name") String actorFirstName)
-//    {
-//        return filmRepo.findAllActorFirstName(actorFirstName);
-//    }
-//
-//    @GetMapping("name/last/{name}/all")
-//    public @ResponseBody List<Actor> getAllActorByLastName(@PathVariable("name") String actorLastName)
-//    {
-//        return filmRepo.findAllActorLastName(actorLastName);
-//    }
-//
-//    @GetMapping("name/first/{name}")
-//    public @ResponseBody Actor getActorByFirstName(@PathVariable("name") String actorFirstName)
-//    {
-//        return filmRepo.findActorFirstName(actorFirstName);
-//    }
-//
-//    @GetMapping("name/last/{name}")
-//    public @ResponseBody Actor getActorByLastName(@PathVariable("name") String actorLastName)
-//    {
-//        return filmRepo.findActorLastName(actorLastName);
-//    }
+    @GetMapping("likeTitle/{name}")
+    public @ResponseBody List<Film> getAllFilmsLikeTitle(@PathVariable(value = "name") String findLike)
+    {
+        return filmRepo.findAllLikeTitle(findLike);
+    }
 
+    @GetMapping("byTitle/{name}")
+    public @ResponseBody List<Film> getAllFilmsByTitle(@PathVariable(value = "name") String findName)
+    {
+        return filmRepo.findAllByTitle(findName);
+    }
+
+    @GetMapping("likeDescription/{name}")
+    public @ResponseBody List<Film> getAllFilmsLikeDescription(@PathVariable(value = "name") String findDescription)
+    {
+        return filmRepo.findAllLikeDescription(findDescription);
+    }
+
+    @GetMapping("byDescription/{name}")
+    public @ResponseBody List<Film> getAllFilmsByDescription(@PathVariable(value = "name") String findDescription)
+    {
+        return filmRepo.findAllByDescription(findDescription);
+    }
 
     // Update
     @PutMapping("/{id}")
