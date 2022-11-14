@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @SpringBootApplication
 @RestController
 @RequestMapping("/")
-@CrossOrigin
+@CrossOrigin (origins = {"http://localhost:8080/", "http://localhost:3000/"})
 public class SakilaProjectApplication
 {
 	public static void main(String[] args)

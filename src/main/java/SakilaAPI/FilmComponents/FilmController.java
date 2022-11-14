@@ -49,12 +49,31 @@ public class FilmController {
         return getSignalFilm(rndCheck);
     }
 
+
     // Get by ID (Read)
     @GetMapping("/{id}")
     public Film getSignalFilm(@PathVariable(value = "id") int filmID)
     {
         return filmRepo.findById(filmID)
                 .orElseThrow(() -> new ResourceAccessException("Film not found at index " + filmID));
+    }
+
+    @GetMapping("byFirstName/{name}")
+    public List<Film> getByActorFirstName(@PathVariable("name") String firstName)
+    {
+        return filmRepo.getFilmsByActorFirstName(firstName);
+    }
+
+    @GetMapping("byLastName/{name}")
+    public @ResponseBody List<Film> getByActorLastName(@PathVariable(value = "name") String lastName)
+    {
+        return filmRepo.findAllLikeTitle(lastName);
+    }
+
+    @GetMapping("byFullName/{firstName}/{lastName}")
+    public @ResponseBody List<Film> getAllFilmsByActorFullName(@PathVariable(value = "firstName") String actorFirstName, @PathVariable(value =  "lastName") String actorLastName)
+    {
+        return filmRepo.getFilmsByActorFullName(actorFirstName, actorLastName);
     }
 
     @GetMapping("likeTitle/{name}")

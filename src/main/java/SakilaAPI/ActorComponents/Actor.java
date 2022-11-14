@@ -4,12 +4,17 @@ import SakilaAPI.FilmComponents.Film;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="actor")
 public class Actor {
 
     //region Attributes
+
+    @ManyToMany (mappedBy = "filmActor")
+    Set<Film> actorFilm;
+
     @Id
     @Column(name="actor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +27,11 @@ public class Actor {
     private String actorLastName;
     //endregion
 
-    @ManyToMany
-    @JoinTable(name = "sakila.film_actor",
-        joinColumns = @JoinColumn(name = "actor_id"),
-        inverseJoinColumns = @JoinColumn(name = "film_id"))
-    List<Film> films;
+
+//    @JoinTable(name = "sakila.film_actor",
+//        joinColumns = @JoinColumn(name = "actor_id"),
+//        inverseJoinColumns = @JoinColumn(name = "film_id"))
+//    List<Film> films;
 
     //region Constructors
     public Actor(int myActorID, String myFirstName, String myLastName)
@@ -49,13 +54,6 @@ public class Actor {
     //endregion
 
     //region Methods
-
-//    public void setAll(int myID, String myFirstName, String myLastName)
-//    {
-//        actorID = myID;
-//        actorFirstName = myFirstName;
-//        actorLastName = myLastName;
-//    }
 
     //region Getters
     public String getActorFirstName()

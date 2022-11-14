@@ -3,12 +3,19 @@ package SakilaAPI.FilmComponents;
 import SakilaAPI.ActorComponents.Actor;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="film")
 public class Film {
 
     //region Attributes
+    @ManyToMany
+    @JoinTable(name = "film_actor",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    Set <Actor> filmActor;
+
     @Id @Column(name = "film_id") @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int filmID;
 
@@ -39,11 +46,8 @@ public class Film {
     @Column(name = "special_features")
     private String filmFeatures;
 
-    @ManyToMany
-    @JoinTable(name = "sakila.film_actor",
-        joinColumns = @JoinColumn(name = "film_id"),
-        inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    List<Actor> actors;
+
+
 
     //endregion
 
