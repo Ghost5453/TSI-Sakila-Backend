@@ -1,17 +1,15 @@
 package SakilaAPI.AddressComponents;
 
-public class AddressModdle {
+import javax.persistence.Column;
 
-    //region Attributes
+public class AddressModel {
+
     private int addressID;
     private String address;
     private String addressDistrict;
     private int cityIdFromAddress;
     private String postCode;
     private String phoneNumber;
-    //endregion
-
-    //region Attributes
 
     public int getAddressID() {
         return addressID;
@@ -36,6 +34,4 @@ public class AddressModdle {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-    
-    //endregion
 }
