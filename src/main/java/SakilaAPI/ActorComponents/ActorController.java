@@ -32,9 +32,10 @@ public class ActorController
 
     // Create
     @PostMapping("")
-    public Actor createActor(@Validated @RequestBody Actor actor)
+    public Actor createActor(@Validated @RequestBody ActorModel actor)
     {
-        return actorRepo.save(actor);
+        Actor newActor = new Actor(actor.getActorFirstName(), actor.getActorLastName());
+        return actorRepo.save(newActor);
     }
 
     // Get by ID (Read)
