@@ -58,19 +58,37 @@ public class FilmController {
                 .orElseThrow(() -> new ResourceAccessException("Film not found at index " + filmID));
     }
 
-    @GetMapping("byFirstName/{name}")
-    public List<Film> getByActorFirstName(@PathVariable("name") String firstName)
+    @GetMapping("likeActorFirstName/{name}")
+    public List<Film> getAllFilmsLikeActorFirstName(@PathVariable("name") String firstName)
+    {
+        return filmRepo.getAllFilmsLikeActorFirstName(firstName);
+    }
+
+    @GetMapping("likeActorLastName/{name}")
+    public @ResponseBody List<Film> getAllFilmsLikeActorLastName(@PathVariable(value = "name") String lastName)
+    {
+        return filmRepo.getAllActorsLikeActorLastName(lastName);
+    }
+
+    @GetMapping("likeActorFullName/{firstName}/{lastName}")
+    public @ResponseBody List<Film> getAllFilmsLikeActorFullName(@PathVariable(value = "firstName") String actorFirstName, @PathVariable(value =  "lastName") String actorLastName)
+    {
+        return filmRepo.getAllFilmsLikeActorFullName(actorFirstName, actorLastName);
+    }
+
+    @GetMapping("byActorFirstName/{name}")
+    public List<Film> getAllFilmsByActorFirstName(@PathVariable("name") String firstName)
     {
         return filmRepo.getFilmsByActorFirstName(firstName);
     }
 
-    @GetMapping("byLastName/{name}")
-    public @ResponseBody List<Film> getByActorLastName(@PathVariable(value = "name") String lastName)
+    @GetMapping("byActorLastName/{name}")
+    public @ResponseBody List<Film> getAllFilmsByActorLastName(@PathVariable(value = "name") String lastName)
     {
-        return filmRepo.findAllLikeTitle(lastName);
+        return filmRepo.getFilmsByActorLastName(lastName);
     }
 
-    @GetMapping("byFullName/{firstName}/{lastName}")
+    @GetMapping("byActorFullName/{firstName}/{lastName}")
     public @ResponseBody List<Film> getAllFilmsByActorFullName(@PathVariable(value = "firstName") String actorFirstName, @PathVariable(value =  "lastName") String actorLastName)
     {
         return filmRepo.getFilmsByActorFullName(actorFirstName, actorLastName);
