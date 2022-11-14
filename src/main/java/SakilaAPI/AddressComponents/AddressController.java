@@ -29,9 +29,10 @@ public class AddressController {
 
     // Create
     @PostMapping("")
-    public Address createActor(@Validated @RequestBody Address address)
+    public Address createActor(@Validated @RequestBody AddressModel address)
     {
-        return addressRepo.save(address);
+        Address newAddress = new Address(address.getAddressID(), address.getAddress(), address.getAddressDistrict(), address.getCityIdFromAddress(), address.getPostCode(), address.getPhoneNumber());
+        return addressRepo.save(newAddress);
     }
 
     // Get by ID (Reed)
@@ -44,12 +45,11 @@ public class AddressController {
     // Update
     @PutMapping("/{id}")
     public ResponseEntity<Address> updateAddress(@PathVariable(value = "id") int addressID,
-                                             @Validated @RequestBody Address addressDetails)
+                                             @Validated @RequestBody AddressModel addressDetails)
             throws ResourceAccessException {
         Address address = addressRepo.findById(addressID)
                 .orElseThrow(() -> new ResourceAccessException("Actor not found by " + addressID));
 
-        address.setAddressID(addressDetails.getAddressID());
         address.setAddress(addressDetails.getAddress());
         address.setAddressDistrict(addressDetails.getAddressDistrict());
         address.setCityIdFromAddress(addressDetails.getCityIdFromAddress());

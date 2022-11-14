@@ -77,7 +77,7 @@ public class ActorController
             throws ResourceAccessException {
         Actor actor = actorRepo.findById(actorID)
                 .orElseThrow(() -> new ResourceAccessException("Actor not found by " + actorID));
-        
+
         actor.setActorLastName(actorDetails.getActorLastName());
         actor.setFirstName(actorDetails.getActorFirstName());
         final Actor updatedEmployee = actorRepo.save(actor);

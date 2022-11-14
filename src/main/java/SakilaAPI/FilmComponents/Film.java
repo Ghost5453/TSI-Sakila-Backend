@@ -46,9 +46,6 @@ public class Film {
     @Column(name = "special_features")
     private String filmFeatures;
 
-
-
-
     //endregion
 
     //region Constructors

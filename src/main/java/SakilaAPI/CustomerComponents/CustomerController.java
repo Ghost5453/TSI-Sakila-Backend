@@ -31,9 +31,10 @@ public class CustomerController
 
     // Create
     @PostMapping("")
-    public Customer createCustomer(@Validated @RequestBody Customer customer)
+    public Customer createCustomer(@Validated @RequestBody CustomerModel customer)
     {
-        return customerRepo.save(customer);
+        Customer newCustomer = new Customer(customer.getCustomerID(),customer.getStoreIDFromCustomer(), customer.getCustomerFirstName(), customer.getCustomerLastName(), customer.getCustomerEmail(), customer.getAddressIDFromCustomer(), customer.getIsCusterActive());
+        return customerRepo.save(newCustomer);
     }
 
     // Get by ID (Read)
@@ -46,17 +47,16 @@ public class CustomerController
     // Update
     @PutMapping("/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "id") int customerID,
-                                             @Validated @RequestBody Customer customerDetails)
+                                             @Validated @RequestBody CustomerModel customerDetails)
             throws ResourceAccessException {
         Customer customer = customerRepo.findById(customerID)
                 .orElseThrow(() -> new ResourceAccessException("Customer not found by " + customerID));
 
-        customer.setCustomerID(customerDetails.getCustomerID());
         customer.setCustomerFirstName(customerDetails.getCustomerFirstName());
         customer.setCustomerLastName(customerDetails.getCustomerLastName());
         customer.setCustomerEmail(customerDetails.getCustomerEmail());
         customer.setAddressIDFromCustomer(customerDetails.getAddressIDFromCustomer());
-        customer.setCustomerIsActive(customerDetails.getIsCustomerActive());
+        customer.setCustomerIsActive(customerDetails.getIsCusterActive());
 
         final Customer updatedEmployee = customerRepo.save(customer);
         return ResponseEntity.ok(updatedEmployee);

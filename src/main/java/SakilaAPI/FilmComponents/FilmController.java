@@ -35,9 +35,10 @@ public class FilmController {
 
     // Create
     @PostMapping("")
-    public Film createFilm(@Validated @RequestBody Film film)
+    public Film createFilm(@Validated @RequestBody FilmModel film)
     {
-        return filmRepo.save(film);
+        Film newFilm = new Film(film.getFilmID(), film.getFilmTitle(), film.getFilmDescription(), film.getFilmLanguageID(), film.getFilmRentalDuration(), film.getFilmRentalPrice(), film.getFilmLength(), film.getFilmReplacementCost(), film.getFilmRating(), film.getFilmFeatures());
+        return filmRepo.save(newFilm);
     }
 
     @GetMapping("/rand")
@@ -121,12 +122,11 @@ public class FilmController {
     // Update
     @PutMapping("/{id}")
     public ResponseEntity<Film> updateActor(@PathVariable(value = "id") int filmID,
-                @Validated @RequestBody Film filmDetails)
+                @Validated @RequestBody FilmModel filmDetails)
             throws ResourceAccessException {
         Film film = filmRepo.findById(filmID)
                 .orElseThrow(() -> new ResourceAccessException("Film not found by " + filmID));
 
-        film.setFilmID(filmDetails.getFilmID());
         film.setFilmTitle(filmDetails.getFilmTitle());
         film.setFilmDescription(filmDetails.getFilmDescription());
         film.setFilmLanguageID(filmDetails.getFilmLanguageID());
