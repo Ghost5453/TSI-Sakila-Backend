@@ -73,12 +73,11 @@ public class ActorController
     // Update
     @PutMapping("/{id}")
     public ResponseEntity<Actor> updateActor(@PathVariable(value = "id") int actorID,
-                 @Validated @RequestBody Actor actorDetails)
+                 @Validated @RequestBody ActorModel actorDetails)
             throws ResourceAccessException {
         Actor actor = actorRepo.findById(actorID)
                 .orElseThrow(() -> new ResourceAccessException("Actor not found by " + actorID));
-
-        actor.setID(actorDetails.getID());
+        
         actor.setActorLastName(actorDetails.getActorLastName());
         actor.setFirstName(actorDetails.getActorFirstName());
         final Actor updatedEmployee = actorRepo.save(actor);
