@@ -59,6 +59,12 @@ public class FilmController {
                 .orElseThrow(() -> new ResourceAccessException("Film not found at index " + filmID));
     }
 
+    @GetMapping("/all/{name}")
+    public List<Film> searchAllFilms(@PathVariable("name") String query)
+    {
+        return filmRepo.searchAllFilms(query);
+    }
+
     @GetMapping("likeActorFirstName/{name}")
     public List<Film> getAllFilmsLikeActorFirstName(@PathVariable("name") String firstName)
     {
