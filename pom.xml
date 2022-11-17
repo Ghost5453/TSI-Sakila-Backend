@@ -92,8 +92,8 @@
 					</auth>
 					<schemaVersion>v2</schemaVersion>
 					<subscriptionId>bc8625ee-259c-490c-9542-bb85fa81245c</subscriptionId>
-					<resourceGroup>Adam-Sakila-rg</resourceGroup>
-					<appName>Adam-Sakila</appName>
+					<resourceGroup>Sakila-Project-1668683367159-rg</resourceGroup>
+					<appName>Sakila-Project-1668683367159</appName>
 					<pricingTier>F1</pricingTier>
 					<region>centralus</region>
 					<runtime>
