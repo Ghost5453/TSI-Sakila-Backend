@@ -65,61 +65,61 @@ public class FilmController {
         return filmRepo.searchAllFilms(query);
     }
 
-    @GetMapping("likeActorFirstName/{name}")
+    @GetMapping("/likeActorFirstName/{name}")
     public List<Film> getAllFilmsLikeActorFirstName(@PathVariable("name") String firstName)
     {
         return filmRepo.getAllFilmsLikeActorFirstName(firstName);
     }
 
-    @GetMapping("likeActorLastName/{name}")
+    @GetMapping("/likeActorLastName/{name}")
     public @ResponseBody List<Film> getAllFilmsLikeActorLastName(@PathVariable(value = "name") String lastName)
     {
         return filmRepo.getAllActorsLikeActorLastName(lastName);
     }
 
-    @GetMapping("likeActorFullName/{firstName}/{lastName}")
+    @GetMapping("/likeActorFullName/{firstName}/{lastName}")
     public @ResponseBody List<Film> getAllFilmsLikeActorFullName(@PathVariable(value = "firstName") String actorFirstName, @PathVariable(value =  "lastName") String actorLastName)
     {
         return filmRepo.getAllFilmsLikeActorFullName(actorFirstName, actorLastName);
     }
 
-    @GetMapping("byActorFirstName/{name}")
+    @GetMapping("/byActorFirstName/{name}")
     public List<Film> getAllFilmsByActorFirstName(@PathVariable("name") String firstName)
     {
         return filmRepo.getFilmsByActorFirstName(firstName);
     }
 
-    @GetMapping("byActorLastName/{name}")
+    @GetMapping("/byActorLastName/{name}")
     public @ResponseBody List<Film> getAllFilmsByActorLastName(@PathVariable(value = "name") String lastName)
     {
         return filmRepo.getFilmsByActorLastName(lastName);
     }
 
-    @GetMapping("byActorFullName/{firstName}/{lastName}")
+    @GetMapping("/byActorFullName/{firstName}/{lastName}")
     public @ResponseBody List<Film> getAllFilmsByActorFullName(@PathVariable(value = "firstName") String actorFirstName, @PathVariable(value =  "lastName") String actorLastName)
     {
         return filmRepo.getFilmsByActorFullName(actorFirstName, actorLastName);
     }
 
-    @GetMapping("likeTitle/{name}")
+    @GetMapping("/likeTitle/{name}")
     public @ResponseBody List<Film> getAllFilmsLikeTitle(@PathVariable(value = "name") String findLike)
     {
         return filmRepo.findAllLikeTitle(findLike);
     }
 
-    @GetMapping("byTitle/{name}")
+    @GetMapping("/byTitle/{name}")
     public @ResponseBody List<Film> getAllFilmsByTitle(@PathVariable(value = "name") String findName)
     {
         return filmRepo.findAllByTitle(findName);
     }
 
-    @GetMapping("likeDescription/{name}")
+    @GetMapping("/likeDescription/{name}")
     public @ResponseBody List<Film> getAllFilmsLikeDescription(@PathVariable(value = "name") String findDescription)
     {
         return filmRepo.findAllLikeDescription(findDescription);
     }
 
-    @GetMapping("byDescription/{name}")
+    @GetMapping("/byDescription/{name}")
     public @ResponseBody List<Film> getAllFilmsByDescription(@PathVariable(value = "name") String findDescription)
     {
         return filmRepo.findAllByDescription(findDescription);
@@ -147,7 +147,7 @@ public class FilmController {
     }
 
     // Delete
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public Map<String, Boolean> deleteActor(@PathVariable(value = "id") int filmID)
             throws ResourceAccessException{
         Film film = filmRepo.findById(filmID)
