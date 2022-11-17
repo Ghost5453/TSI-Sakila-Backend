@@ -45,6 +45,12 @@ public class ActorController
         return actorRepo.findById(actorID).orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
     }
 
+    @GetMapping("name/like/{name}")
+    public List<Actor> getActorLike(@PathVariable(value = "name") String name)
+    {
+        return actorRepo.findActorLikeName(name);
+    }
+
     @GetMapping("name/first/{name}/all")
     public @ResponseBody List<Actor> getAllActorByFirstName(@PathVariable("name") String actorFirstName)
     {
