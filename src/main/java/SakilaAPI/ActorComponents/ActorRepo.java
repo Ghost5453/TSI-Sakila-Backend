@@ -22,5 +22,4 @@ public interface ActorRepo extends JpaRepository<Actor, Integer> {
     @Query(nativeQuery = true, value = "SELECT * FROM sakila.actor WHERE first_name LIKE %?1% OR last_name LIKE %?1%")
     List<Actor> findActorLikeName(String myName);
 
-
 }
