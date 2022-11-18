@@ -21,7 +21,7 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-public class SakilaTestTest {
+public class TestPagesTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
@@ -37,25 +37,43 @@ public class SakilaTestTest {
     driver.quit();
   }
   @Test
-  public void sakilaTest() {
+  public void testPages() {
     driver.get("http://localhost:3000/");
     driver.manage().window().setSize(new Dimension(2560, 1377));
-    driver.findElement(By.linkText("Films")).click();
-    driver.findElement(By.cssSelector(".title")).click();
-    driver.findElement(By.cssSelector(".title")).click();
-    driver.findElement(By.id("searchBoxFilm")).click();
-    driver.findElement(By.id("searchBoxFilm")).sendKeys("ace g");
-    driver.findElement(By.cssSelector(".film2 > .titleS")).click();
-    driver.findElement(By.cssSelector(".film1 > .titleS")).click();
-    driver.findElement(By.cssSelector(".film1 > .titleS")).click();
-    driver.findElement(By.cssSelector(".film2 > .titleS")).click();
-    driver.findElement(By.linkText("Actors")).click();
-    driver.findElement(By.cssSelector(".title")).click();
-    driver.findElement(By.id("searchBoxFilm")).click();
-    driver.findElement(By.id("searchBoxFilm")).sendKeys("guin");
-    driver.findElement(By.cssSelector(".actor1 > .titleS")).click();
     driver.findElement(By.linkText("Home")).click();
-    driver.findElement(By.cssSelector(".contentBody")).click();
-    driver.findElement(By.cssSelector(".contentBody")).click();
+    driver.findElement(By.cssSelector(".title")).click();
+    {
+      List<WebElement> elements = driver.findElements(By.cssSelector("u"));
+      assert(elements.size() > 0);
+    }
+    driver.findElement(By.cssSelector(".contentBody > div")).click();
+    driver.findElement(By.linkText("Actors")).click();
+    {
+      WebElement element = driver.findElement(By.linkText("Actors"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element).perform();
+    }
+    {
+      WebElement element = driver.findElement(By.tagName("body"));
+      Actions builder = new Actions(driver);
+      builder.moveToElement(element, 0, 0).perform();
+    }
+    driver.findElement(By.cssSelector(".title")).click();
+    {
+      List<WebElement> elements = driver.findElements(By.cssSelector("u"));
+      assert(elements.size() > 0);
+    }
+    driver.findElement(By.linkText("Films")).click();
+    driver.findElement(By.cssSelector("u")).click();
+    {
+      List<WebElement> elements = driver.findElements(By.cssSelector("u"));
+      assert(elements.size() > 0);
+    }
+    driver.findElement(By.linkText("Home")).click();
+    driver.findElement(By.cssSelector(".title")).click();
+    {
+      List<WebElement> elements = driver.findElements(By.cssSelector("u"));
+      assert(elements.size() > 0);
+    }
   }
 }
