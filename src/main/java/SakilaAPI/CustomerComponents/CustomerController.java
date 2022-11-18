@@ -63,7 +63,7 @@ public class CustomerController
     }
 
     // Delete
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public Map<String, Boolean> deleteCustomer(@PathVariable(value = "id") int customerID)
             throws ResourceAccessException{
         Customer customer = customerRepo.findById(customerID)

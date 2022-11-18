@@ -61,7 +61,7 @@ public class AddressController {
     }
 
     // Delete
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public Map<String, Boolean> deleteAddress(@PathVariable(value = "id") int addressID)
             throws ResourceAccessException{
         Address address = addressRepo.findById(addressID)

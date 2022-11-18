@@ -45,31 +45,31 @@ public class ActorController
         return actorRepo.findById(actorID).orElseThrow(() -> new ResourceAccessException("Actor not found at index " + actorID));
     }
 
-    @GetMapping("name/like/{name}")
+    @GetMapping("/name/like/{name}")
     public List<Actor> getActorLike(@PathVariable(value = "name") String name)
     {
         return actorRepo.findActorLikeName(name);
     }
 
-    @GetMapping("name/first/{name}/all")
+    @GetMapping("/name/first/{name}/all")
     public @ResponseBody List<Actor> getAllActorByFirstName(@PathVariable("name") String actorFirstName)
     {
         return actorRepo.findAllActorFirstName(actorFirstName);
     }
 
-    @GetMapping("name/last/{name}/all")
+    @GetMapping("/name/last/{name}/all")
     public @ResponseBody List<Actor> getAllActorByLastName(@PathVariable("name") String actorLastName)
     {
         return actorRepo.findAllActorLastName(actorLastName);
     }
 
-    @GetMapping("name/first/{name}")
+    @GetMapping("/name/first/{name}")
     public @ResponseBody Actor getActorByFirstName(@PathVariable("name") String actorFirstName)
     {
         return actorRepo.findActorFirstName(actorFirstName);
     }
 
-    @GetMapping("name/last/{name}")
+    @GetMapping("/name/last/{name}")
     public @ResponseBody Actor getActorByLastName(@PathVariable("name") String actorLastName)
     {
         return actorRepo.findActorLastName(actorLastName);
@@ -91,7 +91,7 @@ public class ActorController
     }
 
     // Delete
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public Map<String, Boolean> deleteActor(@PathVariable(value = "id") int actorID)
             throws ResourceAccessException{
         Actor actor = actorRepo.findById(actorID)
